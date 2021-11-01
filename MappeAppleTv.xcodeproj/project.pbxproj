@@ -11,6 +11,8 @@
 		C4AE131A272FE74D00EC3DDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AE1319272FE74D00EC3DDC /* ContentView.swift */; };
 		C4AE131C272FE74F00EC3DDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AE131B272FE74F00EC3DDC /* Assets.xcassets */; };
 		C4AE131F272FE74F00EC3DDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AE131E272FE74F00EC3DDC /* Preview Assets.xcassets */; };
+		C4AE1327272FE7BB00EC3DDC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AE1326272FE7BB00EC3DDC /* MapView.swift */; };
+		C4AE132A272FE83400EC3DDC /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AE1329272FE83400EC3DDC /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		C4AE1319272FE74D00EC3DDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C4AE131B272FE74F00EC3DDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4AE131E272FE74F00EC3DDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C4AE1326272FE7BB00EC3DDC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		C4AE1329272FE83400EC3DDC /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		C4AE1316272FE74D00EC3DDC /* MappeAppleTv */ = {
 			isa = PBXGroup;
 			children = (
+				C4AE1328272FE81B00EC3DDC /* ViewModel */,
+				C4AE1325272FE78900EC3DDC /* View */,
 				C4AE1317272FE74D00EC3DDC /* MappeAppleTvApp.swift */,
 				C4AE1319272FE74D00EC3DDC /* ContentView.swift */,
 				C4AE131B272FE74F00EC3DDC /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				C4AE131E272FE74F00EC3DDC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C4AE1325272FE78900EC3DDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4AE1326272FE7BB00EC3DDC /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4AE1328272FE81B00EC3DDC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C4AE1329272FE83400EC3DDC /* MapViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4AE131A272FE74D00EC3DDC /* ContentView.swift in Sources */,
+				C4AE1327272FE7BB00EC3DDC /* MapView.swift in Sources */,
 				C4AE1318272FE74D00EC3DDC /* MappeAppleTvApp.swift in Sources */,
+				C4AE132A272FE83400EC3DDC /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +296,7 @@
 				DEVELOPMENT_TEAM = G7DSPSWXXC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -298,6 +323,7 @@
 				DEVELOPMENT_TEAM = G7DSPSWXXC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (

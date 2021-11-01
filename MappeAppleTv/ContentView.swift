@@ -6,11 +6,108 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
+    @StateObject var mapData = MapViewModel()
+//    Location Manager...
+    @State var locationManager = CLLocationManager()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack{
+//            Map View..
+            MapView()
+//            using it as environment object so that it can be used ints subViews...
+                .environmentObject(mapData)
+                .ignoresSafeArea(.all,edges: .all)
+            VStack{
+                VStack(spacing: 0) {
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                        
+                        TextField("Search",text: $mapData.serachTxt)
+                            .colorScheme(.light)
+                            .frame(width: 300)
+                            .gesture(LongPressGesture())
+                        
+                        Button {
+                            mapData.focusLocation()
+                        } label: {
+                            Image(systemName: "location.fill")
+                                .font(.title2)
+                                .padding(10)
+                                .background(Color.black)
+                                
+                        }
+                        .buttonStyle(CardButtonStyle())
+                        
+                        Button {
+                            mapData.updateMapType()
+                        } label: {
+                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
+                                .font(.title2)
+                                .padding(10)
+                                .background(Color.primary)
+                        }
+                    }
+                    
+                    
+//                    .padding(.vertical,10)
+//                    .padding(.horizontal)
+                    .background(Color.white)
+                    
+//                    Displaying Results...
+                    if !mapData.places.isEmpty && mapData.serachTxt != ""{
+                        ScrollView{
+                            VStack(spacing: 15){
+                                ForEach(mapData.places){ place in
+                                    Text(place.placemark.name ?? "")
+                                        .foregroundColor(.black)
+                                        .frame(maxWidth: .infinity,alignment: .leading)
+                                        .padding(.leading)
+//                                        .onTapGesture {
+//                                            mapData.selectePlace(place: place)
+//                                        }
+                                    Divider()
+                                }
+                            }
+                            .padding(.top)
+                        }
+                        .background(Color.white)
+                    }
+                    
+                }.padding()
+                Spacer()
+
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding()
+            }
+        }
+        .onAppear {
+//            setting delegate...
+            locationManager.delegate = mapData
+            locationManager.requestWhenInUseAuthorization()
+        }
+//        Permission Denied Alert...
+        .alert(isPresented:  $mapData.permissionDenied) {
+            Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission In the App Settings"), dismissButton: .default(Text("Goto Settings"),action: {
+//                Redireting User To Settings..
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }))
+        }
+        .onChange(of: mapData.serachTxt) { value in
+//            search Places..
+//            you can use your own delay time to avoid Continuos Search Request...
+            
+            let delay = 0.3
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                if value == mapData.serachTxt{
+//                  Seatch...
+                    self.mapData.searchQuery()
+                }
+            }
+        }
     }
 }
 
