@@ -29,26 +29,26 @@ struct ContentView: View {
                             .colorScheme(.light)
                             .frame(width: 300)
                             .gesture(LongPressGesture())
-                        
-                        Button {
-                            mapData.focusLocation()
-                        } label: {
-                            Image(systemName: "location.fill")
-                                .font(.title2)
-                                .padding(10)
-                                .background(Color.black)
-                                
-                        }
-                        .buttonStyle(CardButtonStyle())
-                        
-                        Button {
-                            mapData.updateMapType()
-                        } label: {
-                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
-                                .font(.title2)
-                                .padding(10)
-                                .background(Color.primary)
-                        }
+//
+//                        Button {
+//                            mapData.focusLocation()
+//                        } label: {
+//                            Image(systemName: "location.fill")
+//                                .font(.title2)
+//                                .padding(10)
+//                                .background(Color.black)
+//
+//                        }
+//                        .buttonStyle(CardButtonStyle())
+//
+//                        Button {
+//                            mapData.updateMapType()
+//                        } label: {
+//                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
+//                                .font(.title2)
+//                                .padding(10)
+//                                .background(Color.primary)
+//                        }
                     }
                     
                     
@@ -95,21 +95,20 @@ struct ContentView: View {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }))
         }
-        .onChange(of: mapData.serachTxt) { value in
-//            search Places..
-//            you can use your own delay time to avoid Continuos Search Request...
-            
-            let delay = 0.3
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                if value == mapData.serachTxt{
-//                  Seatch...
-                    self.mapData.searchQuery()
-                }
-            }
+//        .onChange(of: mapData.serachTxt) { value in
+////            search Places..
+////            you can use your own delay time to avoid Continuos Search Request...
+//
+//            let delay = 0.3
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now()) {
+//                if value == mapData.serachTxt{
+////                  Seatch...
+//                    self.mapData.searchQuery()
+//                }
+//            }
         }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
